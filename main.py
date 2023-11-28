@@ -5,13 +5,13 @@ import subprocess
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackContext
 
-EMAIL, PASSWORD, TOKEN = range(3)
+EMAIL, PASSWORD, TOKEN, MEGA_EMAIL, MEGA_PASSWORD = range(5)
 
 def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
         '<b>⚙️ Welcome to Canon Rclone Bot 🧰 </b>\n\n'
         '🤔 What does this bot do?\n'
-        '- This bot is to easily generate Rclone config for PikPak and Telebox (for now).\n'
+        '- This bot is to easily generate Rclone config for PikPak, Telebox, and Mega (for now).\n'
         '🤷‍♂️ Does it support Google Drive, Dropbox, and other cloud storages?\n'
         '- It depends. If the config generation doesn\'t need web auth, then it can be added. Sadly, Google Drive and Dropbox uses web auth so those services can\'t be generated with this bot.\n'
         '🔐 Will my token, email, and password be logged?\n'
@@ -19,13 +19,26 @@ def start(update: Update, context: CallbackContext) -> None:
         '<b>How to use this bot?</b>\n'
         '/telebox: Generate Telebox Rclone config\n'
         '/pikpak: Generate PikPak Rclone config\n'
+        '/mega: Generate Mega Rclone config\n'
         '/help: Show this message\n\n'
         '👩🏻 Author: @katarina_ox (<a href="https://github.com/devolart/rclone-generator-bot" rel="noopener noreferrer" target="_blank">source code</a>)',
         parse_mode='HTML',
         disable_web_page_preview=True
     )
 
+def mega(update: Update, context: CallbackContext) -> int:
+    update.message.reply_text('Please enter your Mega email:')
+    return MEGA_EMAIL
 
+def mega_email(update: Update, context: CallbackContext) -> int:
+    context.user_data['mega_email'] = update.message.text
+    update.message.reply_text('Please enter your Mega password:')
+    return MEGA_PASSWORD
+
+def mega_password(update: Update, context: CallbackContext) -> int:
+    context.user_data['mega_password'] = update.message.text
+    generate_config(update, context, 'mega', 'mega', 'user', context.user_data['mega_email'], 'pass', context.user_data['mega_password'])
+    return ConversationHandler.END
 
 def pikpak(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Please enter your email:')
@@ -90,10 +103,20 @@ def main() -> None:
         fallbacks=[],
     )
 
+    mega_handler = ConversationHandler(
+        entry_points=[CommandHandler('mega', mega)],
+        states={
+            MEGA_EMAIL: [MessageHandler(Filters.text & ~Filters.command, mega_email)],
+            MEGA_PASSWORD: [MessageHandler(Filters.text & ~Filters.command, mega_password)],
+        },
+        fallbacks=[],
+    )
+
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CommandHandler('help', start))
     updater.dispatcher.add_handler(pikpak_handler)
     updater.dispatcher.add_handler(telebox_handler)
+    updater.dispatcher.add_handler(mega_handler)
 
     updater.start_polling()
 
