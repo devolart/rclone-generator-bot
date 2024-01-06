@@ -5,6 +5,7 @@ import subprocess
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackContext
 
+bot_token = os.environ.get("BOT_TOKEN")
 EMAIL, PASSWORD, TOKEN, MEGA_EMAIL, MEGA_PASSWORD = range(5)
 
 def start(update: Update, context: CallbackContext) -> None:
@@ -84,7 +85,7 @@ def generate_config(update: Update, context: CallbackContext, name: str, type: s
         context.bot.delete_message(chat_id=update.effective_chat.id, message_id=loading_message.message_id)
 
 def main() -> None:
-    updater = Updater("BOT_TOKEN")
+    updater = Updater(bot_token)
 
     pikpak_handler = ConversationHandler(
         entry_points=[CommandHandler('pikpak', pikpak)],
