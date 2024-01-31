@@ -34,7 +34,9 @@ def start(update: Update, context: CallbackContext) -> None:
         '/proton: Generate Proton Drive Rclone config\n'
         '/jotta: Generate Jottacloud Rclone config\n'
         '/help: Show this message\n\n'
-        '👩🏻 Author: @katarina_ox\n🔠 Source code: <a href="https://github.com/devolart/rclone-generator-bot" rel="noopener noreferrer" target="_blank">GitHub link</a>',
+        '👩🏻 Author: @katarina_ox\n'
+        '📢 Channel: @tearflakes\n'
+        '🔠 Source code: <a href="https://github.com/devolart/rclone-generator-bot" rel="noopener noreferrer" target="_blank">GitHub link</a>',
         parse_mode='HTML',
         disable_web_page_preview=True
     )

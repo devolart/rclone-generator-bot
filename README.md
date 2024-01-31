@@ -36,3 +36,6 @@ python main.py
 Coming soon
 ### Render
 Coming soon
+
+## Support
+Telegram channel: https://t.me/tearflakes
