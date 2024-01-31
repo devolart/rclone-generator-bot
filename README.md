@@ -1,7 +1,38 @@
 # rclone-generator-bot
-
+Generate your Rclone config easily via Telegram bot
+## Demo
+https://t.me/CanonRcloneBot
 ## How to deploy
+### Docker
+Coming soon
+### Legacy
+1. Clone this repository
+```
+git clone https://github.com/devolart/rclone-generator-bot
+```
+2. Open the cloned directory
+```
+cd rclone-generator-bot
+```
+3. Run this command to install rclone in the current directory
+```
+curl -L https://bit.ly/rclone_noroot | bash
+```
+4. Install python packages from requirements file
+```
+pip install -r requirements.txt
+```
+NOTE: This bot uses old version of `python-telegram-bot` package (version 13.7). If your machine uses the same package with different versions for other bots, I recommend you to use venv or add this argument `--target=.` to the end of the command above to install the packages in the current directory instead.
 
-1. Put `rclone` binary in the repository folder
-2. Install python-telegram-bot version 13.7 with `pip install python-telegram-bot==13.7` (you can use venv or `--target=.` argument for some isolation)
-3. Run the python file with `python3 main.py`
+5. Edit `main.py` to put your bot token inside (you can use Nano, Vi, or any other text editors. In this example, we use Nano)
+```
+nano main.py
+```
+6. Run `main.py` with Python
+```
+python main.py
+```
+### Heroku
+Coming soon
+### Render
+Coming soon
