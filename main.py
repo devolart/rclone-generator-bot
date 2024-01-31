@@ -25,7 +25,7 @@ def start(update: Update, context: CallbackContext) -> None:
         '🔐 Will my token, email, and password be logged?\n'
         '- This bot doesn\'t log your credentials to generate the config (the log only saves successful or error messages) and it will delete any files related to your account after the config is being sent to you. If you don\'t trust this bot, you can use a dummy account or you may simply not use this bot.\n'
         '❌ How to cancel current operations?\n'
-        '- For now, simply leave it that way or enter random inputs until it gives you a config or an error. You can also trigger another command instead if you choose the wrong command. This is a bug in my code and I haven\'t found the solution yet, sorry for the inconvenience.\n\n'
+        '- For now, simply leave it that way or enter random inputs until it gives you a config or an error. You can also trigger another command instead if you choose the wrong command. This is a bug in my code and I haven\'t found the solution yet (you can send a pull request to my source code below), sorry for the inconvenience.\n\n'
         '<b>How to use this bot?</b>\n'
         '/telebox: Generate Telebox Rclone config\n'
         '/pikpak: Generate PikPak Rclone config\n'
@@ -34,7 +34,7 @@ def start(update: Update, context: CallbackContext) -> None:
         '/proton: Generate Proton Drive Rclone config\n'
         '/jotta: Generate Jottacloud Rclone config\n'
         '/help: Show this message\n\n'
-        '👩🏻 Author: @katarina_ox (<a href="https://github.com/devolart/rclone-generator-bot" rel="noopener noreferrer" target="_blank">source code</a>)',
+        '👩🏻 Author: @katarina_ox\n🔠 Source code: <a href="https://github.com/devolart/rclone-generator-bot" rel="noopener noreferrer" target="_blank">GitHub link</a>',
         parse_mode='HTML',
         disable_web_page_preview=True
     )
