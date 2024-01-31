@@ -19,7 +19,7 @@ def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
         '<b>⚙️ Welcome to Canon Rclone Bot 🧰 </b>\n\n'
         '🤔 What does this bot do?\n'
-        '- This bot is to easily generate Rclone config for PikPak, Telebox, Mega, and Koofr (for now).\n'
+        '- This bot is to easily generate Rclone config for PikPak, Telebox, Mega, Koofr, Proton Drive, and Jottacloud (for now).\n'
         '🤷‍♂️ Does it support Google Drive, Dropbox, and other cloud storages?\n'
         '- It depends. If the config generation doesn\'t need web auth, then it can be added. Sadly, Google Drive and Dropbox uses web auth so those services can\'t be generated with this bot.\n'
         '🔐 Will my token, email, and password be logged?\n'
