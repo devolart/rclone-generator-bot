@@ -1,0 +1,3 @@
+flask
+flask_restful
+python-telegram-bot==13.7
