@@ -1,7 +1,8 @@
 # rclone-generator-bot
 Generate your Rclone config easily via Telegram bot
 ## Demo
-https://t.me/CanonRcloneBot
+1. https://t.me/CanonRcloneBot
+2. https://t.me/CanonRcloneV2Bot
 ## How to deploy
 ### Docker
 Coming soon
