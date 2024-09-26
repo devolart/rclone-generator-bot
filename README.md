@@ -17,7 +17,7 @@ cd rclone-generator-bot
 ```
 3. Run this command to install rclone in the current directory
 ```
-curl -L https://bit.ly/rclone_noroot | bash
+curl https://i.jpillora.com/rclone/rclone | bash
 ```
 4. Install python packages from requirements file
 ```
